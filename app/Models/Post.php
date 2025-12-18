@@ -14,7 +14,9 @@ class Post extends Model
 
     protected $casts = [
         'status' => PostStatus::class,
-        'type' => PostType::class
+        'type' => PostType::class,
+        'meta_keywords' => "json",
+        'published_at' => 'datetime'
     ];
 
     public function parent(): BelongsTo

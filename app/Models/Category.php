@@ -15,6 +15,13 @@ class Category extends Model
         "image",
         "is_active",
         "parent_id",
+        'meta_title',
+        'meta_description',
+        'meta_keywords'
+    ];
+
+    protected $casts = [
+        'meta_keywords' => 'json'
     ];
 
     public function parent()
@@ -31,7 +38,7 @@ class Category extends Model
     {
         return $this->belongsToMany(Post::class, 'category_posts');
     }
-    
+
     // scopes
     public function scopeActive($query)
     {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24ced75bdaee8e22e0b0bacf123b7cb4",
+    "content-hash": "96b240df0c0479f431251698ebcea97c",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -5146,6 +5146,77 @@
             "time": "2022-12-17T21:53:22+00:00"
         },
         {
+            "name": "solution-forest/filament-tree",
+            "version": "3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/solutionforest/filament-tree.git",
+                "reference": "2722a10d782585c6063ec50903eb53f186e5202f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/solutionforest/filament-tree/zipball/2722a10d782585c6063ec50903eb53f186e5202f",
+                "reference": "2722a10d782585c6063ec50903eb53f186e5202f",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^8.0",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^3.0",
+                "pestphp/pest-plugin-arch": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "pestphp/pest-plugin-livewire": "^3.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "rector/rector": "^2.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SolutionForest\\FilamentTree\\FilamentTreeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SolutionForest\\FilamentTree\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carly",
+                    "email": "info@solutionforest.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is a tree layout plugin for Filament Admin",
+            "homepage": "https://github.com/solution-forest/filament-tree",
+            "keywords": [
+                "Solution Forest",
+                "filament-tree",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/solution-forest/filament-tree/issues",
+                "source": "https://github.com/solution-forest/filament-tree"
+            },
+            "time": "2025-10-22T03:25:18+00:00"
+        },
+        {
             "name": "spatie/invade",
             "version": "2.1.0",
             "source": {
@@ -5329,6 +5400,54 @@
                 }
             ],
             "time": "2025-02-21T14:16:57+00:00"
+        },
+        {
+            "name": "subham/filament-dynamic-settings",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/subhamsharmaa/filament-dynamic-settings.git",
+                "reference": "06a58179462e9921e7d2c1891b68bd08e82e4bec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/subhamsharmaa/filament-dynamic-settings/zipball/06a58179462e9921e7d2c1891b68bd08e82e4bec",
+                "reference": "06a58179462e9921e7d2c1891b68bd08e82e4bec",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "illuminate/contracts": "^10.0|^11.0|^12.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "filament/upgrade": "^4.0",
+                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Subham\\FilamentDynamicSettings\\FilamentDynamicSettingsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Subham\\FilamentDynamicSettings\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Dynamic settings plugin for Filament",
+            "support": {
+                "issues": "https://github.com/subhamsharmaa/filament-dynamic-settings/issues",
+                "source": "https://github.com/subhamsharmaa/filament-dynamic-settings/tree/v2.0.1"
+            },
+            "time": "2025-08-25T15:17:32+00:00"
         },
         {
             "name": "symfony/clock",

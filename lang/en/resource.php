@@ -58,6 +58,7 @@ return [
             'categories' => "Categories"
         ],
     ],
+
     //page resource
     'page' => [
         'navigation' => [
@@ -66,4 +67,12 @@ return [
             'plural_model_label' => "Page"
         ],
     ],
+
+    // setting resource
+    // 'setting' => [
+    //     'company_name' => "Company Name",
+    //     'logo' => "Logo",
+    //     "header_menu" => "Header Menu",
+    //     "footer_menu" => "Footer Menu"
+    // ]
 ];

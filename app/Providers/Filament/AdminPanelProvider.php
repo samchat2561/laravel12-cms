@@ -21,6 +21,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Subham\FilamentDynamicSettings\FilamentDynamicSettingsPlugin;
+use Subham\FilamentDynamicSettings\Models\Setting;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -40,6 +42,12 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Amber,
                 'danger' => Color::Red,
             ])
+            ->brandName(function () {
+                return Setting::get('app_name', 'general', 'Default app');
+            })
+            // ->brandLogo(function () {
+            //     return Setting::get('Logo', 'app');
+            // })
             ->resourceCreatePageRedirect('index')
             ->resourceEditPageRedirect('index')
             ->font('poppins')
@@ -53,6 +61,9 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
+            ->plugin(
+                new FilamentDynamicSettingsPlugin()
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
