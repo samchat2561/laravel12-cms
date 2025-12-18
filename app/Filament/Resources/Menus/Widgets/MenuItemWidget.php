@@ -2,12 +2,18 @@
 
 namespace App\Filament\Resources\Menus\Widgets;
 
+use App\Models\Category;
 use App\Models\MenuItem;
+use App\Models\Post;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use SolutionForest\FilamentTree\Actions\DeleteAction;
 use SolutionForest\FilamentTree\Actions\EditAction as ActionsEditAction;
 use SolutionForest\FilamentTree\Widgets\Tree;
@@ -36,9 +42,45 @@ class MenuItemWidget extends Tree
                     TextInput::make('title')
                         ->required(),
 
+                    Select::make('type')
+                        ->options([
+                            'custom' => "Custom",
+                            'category' => "Category",
+                            'post' => "Post",
+                            'page' => "Page"
+                        ])
+                        ->required()
+                        ->live(onBlur: true),
+
+                    Select::make('slug')
+                        ->label('Content')
+                        ->searchable()
+                        ->preload()
+                        ->options(function (Get $get) {
+                            if ($get('type') == "category") {
+                                return Category::active()->pluck('name', 'slug');
+                            } else if ($get('type') == "post") {
+                                return Post::post()->pluck('title', 'slug');
+                            } else if ($get('type') == "page") {
+                                return Post::page()->pluck('title', 'slug');
+                            }
+                        }),
+
                     TextInput::make('url')
                         ->required()
                         ->unique()
+                        ->hintAction(
+                            Action::make('generate_slug')
+                                ->action(function (Get $get, Set $set) {
+                                    $slug = match ($get('type')) {
+                                        'category' => "/category/" . $get('slug'),
+                                        'post' => "/" . $get('slug'),
+                                        'page' => "/" . $get('slug'),
+                                        default => "/" . Str::slug($get('title'))
+                                    };
+                                    $set('url', $slug);
+                                })
+                        )
                 ])
         ];
     }
@@ -76,18 +118,18 @@ class MenuItemWidget extends Tree
     protected function getTreeActions(): array
     {
         return [
-    //         Action::make('helloWorld')
-    //             ->action(function () {
-    //                 Notification::make()->success()->title('Hello World')->send();
-    //             }),
-    //         // ViewAction::make(),
-    //      EditAction::make(),
+            //         Action::make('helloWorld')
+            //             ->action(function () {
+            //                 Notification::make()->success()->title('Hello World')->send();
+            //             }),
+            //         // ViewAction::make(),
+            //      EditAction::make(),
             ActionsEditAction::make(),
-    //         ActionGroup::make([
-    //
-    //             ViewAction::make(),
-    //             EditAction::make(),
-    //         ]),
+            //         ActionGroup::make([
+            //
+            //             ViewAction::make(),
+            //             EditAction::make(),
+            //         ]),
             DeleteAction::make(),
         ];
     }
