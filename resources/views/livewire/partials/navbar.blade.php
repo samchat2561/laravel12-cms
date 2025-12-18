@@ -81,7 +81,7 @@
                                     </svg>
                                 </button>
 
-                                <ul x-show="open" x-transition class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10 py-1">
+                                <ul x-show="open" x-transition class="absolute left-0 mt-2 w-max bg-white shadow-lg rounded-md z-10 py-1">
                                     @foreach ($item->children as $childItem)
                                         <li>
                                             <a href="{{ $childItem->url }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">{{ $childItem->title }}</a>
