@@ -62,29 +62,43 @@
                     </svg>
                 </button>
 
+                {{-- {{ $mainMenuItems }} --}}
+
                 <!-- Navigation -->
                 <ul class="lg:flex lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
-                    <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-                        <a href='{{ route('home.index') }}' class="hover:text-amber-700 text-amber-900 text-[14px] font-semibold lg:hover:fill-blue-700 flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="ml-1 size-5">
-                                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                            </svg>
-                            หน้าแรก
-                        </a>
-                    </li>
+                    @foreach ($mainMenuItems as $item)
+                        @if ($item->children && $item->children->count())
+                            <li class="group max-lg:border-b max-lg:border-gray-300 max-lg:py-3 relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                                <button class=" hover:text-amber-700 text-amber-900 lg:hover:fill-blue-700 flex items-center focus:outline-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                                        <path d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z" />
+                                        <path fill-rule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 .634-.74A49.109 49.109 0 0 1 12 9c2.59 0 5.134.202 7.616.592a.75.75 0 0 1 .634.74Zm-7.5 2.418a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Zm3-.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0v-6.75a.75.75 0 0 1 .75-.75ZM9 12.75a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Z" clip-rule="evenodd" />
+                                        <path d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" />
+                                    </svg>
+                                    {{ $item->title }}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#821E0A" width="20px" height="20px" viewBox="0 0 24 24" data-iconid="453453" data-svgname="Arrow drop down">
+                                        <path d="M7 10l5 5 5-5z"></path>
+                                    </svg>
+                                </button>
 
-                    <li class="group max-lg:border-b max-lg:border-gray-300 max-lg:py-3 relative">
-                        <a href='javascript:void(0)'
-                            class="hover:text-amber-700 text-amber-900 text-[14px] font-semibold lg:hover:fill-blue-700 flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="ml-1 size-5">
-                                <path d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z" />
-                                <path fill-rule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 .634-.74A49.109 49.109 0 0 1 12 9c2.59 0 5.134.202 7.616.592a.75.75 0 0 1 .634.74Zm-7.5 2.418a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Zm3-.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0v-6.75a.75.75 0 0 1 .75-.75ZM9 12.75a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Z" clip-rule="evenodd" />
-                                <path d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" />
-                            </svg>
-                            เกี่ยวกับวิทยาลัย
-                        </a>
-                    </li>
+                                <ul x-show="open" x-transition class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10 py-1">
+                                    @foreach ($item->children as $childItem)
+                                        <li>
+                                            <a href="{{ $childItem->url }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">{{ $childItem->title }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @else
+                            <li class="group max-lg:border-b max-lg:border-gray-300 max-lg:py-3 hover:text-amber-700 text-amber-900 flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                                    <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                    <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                                </svg>
+                                <a href="{{ $item->url }}" class="hover:text-amber-700 text-amber-900 lg:hover:fill-blue-700">{{ $item->title }}</a>
+                            </li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
 
