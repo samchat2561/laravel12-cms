@@ -44,5 +44,4 @@ class Post extends Model
     {
         return $query->where('type', PostType::PAGE);
     }
-
 }

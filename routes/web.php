@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePage::class)->name('home.index');
 
 Route::get('/category/{category:slug}', function (Request $request, Category $category) {
-    dd($category);
+    // dd($category);
+    return $category;
 });
 
 Route::get('/{post:slug}', function (Request $request, Post $post) {
-    dd($post);
+    // dd($post);
+    return $post;
 });
