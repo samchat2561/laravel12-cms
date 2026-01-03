@@ -44,4 +44,9 @@ class Post extends Model
     {
         return $query->where('type', PostType::PAGE);
     }
+
+     public function scopePublished($query): Builder
+    {
+        return $query->where('status', PostStatus::PUBLISHED);
+    }
 }
