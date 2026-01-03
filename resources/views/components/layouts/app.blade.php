@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,12 +22,14 @@
 
 </head>
 
-<body class="bg-slate-100 dark:bg-slate-200">
+<body class="min-h-screen flex flex-col justify-between bg-gray-100 sarabun">
     @livewire('partials.navbar')
     <main>
         {{ $slot }}
+        @yield('content')
     </main>
     @livewire('partials.footer')
     @livewireScripts
 </body>
+
 </html>
