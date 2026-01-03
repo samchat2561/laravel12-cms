@@ -12,7 +12,8 @@ class HomePage extends Component
 
     public function render()
     {
-        $posts = Post::with('categories')->post()->published()->paginate(3);
+        // $posts = Post::with('categories')->post()->published()->paginate(3);
+        $posts = Post::with('categories')->post()->published()->orderBy('published_at', 'desc')->paginate(3);
         return view('livewire.home-page', ['posts' => $posts]);
     }
 }
