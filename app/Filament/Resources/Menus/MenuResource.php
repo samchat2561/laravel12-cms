@@ -18,8 +18,8 @@ class MenuResource extends Resource
 {
     protected static ?string $model = Menu::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Folder;
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::Folder;
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema

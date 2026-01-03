@@ -50,11 +50,9 @@
                 <div class="mt-12 pt-8 border-t border-t-gray-300">
                     <h3 class="text-lg font-bold text-gray-900 mb-4">Tags:</h3>
                     <div class="flex flex-wrap gap-2">
-                        {{-- @foreach ($post->tags as $tag) --}}
                         <a href="">
                             <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">xxx</span>
                         </a>
-                        {{-- @endforeach --}}
                     </div>
                 </div>
 
@@ -95,6 +93,8 @@
             </div>
         </div>
     </article>
+
+    <!-- Related Posts -->
 
     <!-- Comments Section -->
     <section class="bg-white py-16">
