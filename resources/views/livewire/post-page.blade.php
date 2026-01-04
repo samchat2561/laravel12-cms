@@ -50,9 +50,12 @@
                 <div class="mt-12 pt-8 border-t border-t-gray-300">
                     <h3 class="text-lg font-bold text-gray-900 mb-4">Tags:</h3>
                     <div class="flex flex-wrap gap-2">
-                        <a href="">
-                            <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">xxx</span>
-                        </a>
+                        @foreach ($post->tags as $tag)
+                            <a href="{{ route('post.bytag', $tag->slug) }}">
+                                <span
+                                    class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">{{ ucwords($tag->name) }}</span>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
@@ -95,6 +98,7 @@
     </article>
 
     <!-- Related Posts -->
+    @include('livewire.bloglist-page', ['sectionTitle' => "Related Post", 'posts' => $relatedPosts,'showPaginationLink'=>false])
 
     <!-- Comments Section -->
     <section class="bg-white py-16">

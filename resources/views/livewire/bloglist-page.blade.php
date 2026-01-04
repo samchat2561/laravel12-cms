@@ -36,9 +36,12 @@
                 </div>
 
                 {{-- pagination --}}
-                <div class="my-6">
-                    {{ $posts->links() }}
-                </div>
+                @if ($showPaginationLink ?? true)
+                    <div class="mt-6">
+                        {{ $posts->links() }}
+                    </div>
+                @endif
+                
             </div>
 
             {{-- Category page --}}
