@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\SetLocale;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -45,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName(function () {
                 return Setting::get('app_name', 'general', 'Default app');
             })
+            ->brandLogo(asset('images/logo.svg'))
             // ->brandLogo(function () {
             //     return Setting::get('Logo', 'app');
             // })
@@ -75,6 +77,9 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
                 SetLocale::class,
+            ])
+            ->plugins([
+                FilamentShieldPlugin::make(),
             ])
             ->RenderHook(
                 PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
