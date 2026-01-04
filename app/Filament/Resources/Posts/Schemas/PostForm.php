@@ -73,26 +73,25 @@ class PostForm
                                             ->label(__('resource.post.fields.status'))
                                             ->required()
                                             ->options(PostStatus::class)
-                                            ->default(PostStatus::DRAFT->value),
-                                            // ->native(false)
-                                            // ->visible(fn() => auth()->user()->can('Publish:Post')),
+                                            ->default(PostStatus::DRAFT->value)
+                                            ->native(false)
+                                            ->visible(fn() => auth()->user()->can('Publish:Post')),
 
                                         DateTimePicker::make('published_at')
                                             ->label(__('resource.post.fields.published_at'))
                                             ->default(now())
-                                            ->required(),
-                                            // ->native(false)
-                                            // ->visible(fn() => auth()->user()->can('Publish:Post')),
+                                            ->required()
+                                            ->native(false),
 
                                         Toggle::make('is_featured')
-                                            ->label(__('resource.post.fields.is_featured')),
-                                            // ->default(false)
-                                            // ->inline(false),
+                                            ->label(__('resource.post.fields.is_featured'))
+                                            ->default(false)
+                                            ->inline(false),
 
                                         Toggle::make('comment_status')
-                                            ->label(__('resource.post.fields.comment_status')),
-                                            // ->default(true)
-                                            // ->inline(false),
+                                            ->label(__('resource.post.fields.comment_status'))
+                                            ->default(true)
+                                            ->inline(false),
                                     ])
                                     ->compact(),
 
@@ -130,7 +129,7 @@ class PostForm
                                             ->searchable()
                                             ->placeholder('Select parent post')
                                             ->native(false),
-                                            
+
                                         SpatieTagsInput::make('tags')
                                     ])
                                     ->collapsible()

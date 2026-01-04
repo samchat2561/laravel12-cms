@@ -70,6 +70,7 @@ class CategoriesTable
                     DeleteBulkAction::make(),
                     BulkAction::make('toggle_status')
                         ->label(__('resource.category.action.toggle'))
+                        ->visible(fn() => auth()->user()->can('BulkToggle:Category'))
                         ->action(function (Collection $records) {
                             foreach ($records as $record) {
                                 $record->is_active = !$record->is_active;
