@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Http\Middleware\SetLocale;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Filament\Auth\Pages\Register;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Subham\FilamentDynamicSettings\FilamentDynamicSettingsPlugin;
 use Subham\FilamentDynamicSettings\Models\Setting;
+use App\Filament\Pages\Auth\EditProfile as AuthEditProfile;
+use Filament\Auth\Pages\Login;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -33,7 +36,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(Login::class)
+            ->registration(Register::class)
             ->brandName("Laravel CMS")
             ->colors([
                 'primary' => Color::Violet,
@@ -43,6 +47,7 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Amber,
                 'danger' => Color::Red,
             ])
+            ->profile(AuthEditProfile::class)
             ->brandName(function () {
                 return Setting::get('app_name', 'general', 'Default app');
             })
